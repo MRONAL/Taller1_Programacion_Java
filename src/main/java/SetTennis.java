@@ -19,29 +19,31 @@ public class SetTennis {
         // JugadorB gana si: hace 6 juegos o llega 7,
         // Aun no se acaba el set si jugadorA o jugadorB no pasan de 6,
         // El set es invalido cuando un jugador llega a 7 y el otro no llega a 5
-        if (jugadorA == maxJuegos && jugadorB < 5 || jugadorB == maxJuegos && jugadorA < 5) {
+        if ((jugadorA < 0 || jugadorB < 0) ||
+                (jugadorB == maxJuegos && jugadorA < juegos) ||
+                (jugadorA == maxJuegos && jugadorB < juegos)) {
             System.out.println("invalido");
-            return;
+
         } else {
-            if ((jugadorB != 5) && jugadorA == juegos) {
+            if (jugadorA >= juegos && jugadorA > jugadorB + 1) {
                 ganador = true;
-                invalido = false;
                 System.out.println("Gana jugador A");
             }
 
-            if ((jugadorA != 5) && jugadorB == juegos) {
+            if (jugadorB >= juegos && jugadorB > jugadorA + 1) {
                 ganador = true;
-                invalido = false;
                 System.out.println("Gana jugador B");
             }
-            if (jugadorA < juegos || jugadorB < juegos) {
-                if (!ganador) {
-                    System.out.println("El set aun no termina");
 
-                }
-
+            if (!ganador) {
+                System.out.println("El set aun no termina");
             }
         }
-
     }
 }
+
+
+
+
+
+
